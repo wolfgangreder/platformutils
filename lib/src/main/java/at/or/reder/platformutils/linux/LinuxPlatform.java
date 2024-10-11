@@ -29,7 +29,7 @@ public class LinuxPlatform implements Platform {
  
   private static final class InstanceHolder {
 
-    private final static LinuxPlatform INSTANCE = new LinuxPlatform();
+    private static final LinuxPlatform INSTANCE = new LinuxPlatform();
   }
 
   public static Platform getInstance()

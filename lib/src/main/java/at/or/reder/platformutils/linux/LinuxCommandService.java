@@ -30,7 +30,7 @@ class LinuxCommandService implements CommandService {
     Path pathToCommand = null;
     String path = System.getenv("PATH");
     if (path != null) {
-      String paths[] = path.split(File.pathSeparator);
+      String[] paths = path.split(File.pathSeparator);
       for (String p : paths) {
         Path result = Paths.get(p,
                                 command);

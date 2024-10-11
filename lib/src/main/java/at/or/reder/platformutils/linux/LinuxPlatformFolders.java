@@ -37,7 +37,7 @@ class LinuxPlatformFolders implements PlatformFolders {
   private final LazyInitialized<Path> videos = new LazyInitialized(() -> loadPathFromUserDir("XDG_VIDEOS_DIR"));
   private final LazyInitialized<Path> music = new LazyInitialized(() -> loadPathFromUserDir("XDG_MUSIC_DIR"));
   private final LazyInitialized<Path> cacheDir = new LazyInitialized(this::getCacheRoot);
-  private final LazyInitialized<Path> thumbnailDir = new LazyInitialized(() -> loadThumbnailDir());
+  private final LazyInitialized<Path> thumbnailDir = new LazyInitialized(this::loadThumbnailDir);
 
   private Path getEnvOrDefault(String env,
                                String defaultValue)
@@ -47,7 +47,7 @@ class LinuxPlatformFolders implements PlatformFolders {
       tmp = defaultValue;
     }
     if (tmp != null) {
-      tmp = tmp.replaceAll("\\$HOME",
+      tmp = tmp.replace("$HOME",
                            System.getProperty("user.home"));
       return Paths.get(tmp);
     }
